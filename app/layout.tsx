@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col">
-        <ClerkProvider appearance={{ baseTheme: shadcn }}>
+        <ClerkProvider appearance={{ theme: shadcn }}>
           <header className="w-full flex items-center justify-end gap-2 p-4">
             <Show when="signed-out">
               <SignInButton mode="modal">
