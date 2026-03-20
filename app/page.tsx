@@ -1,4 +1,41 @@
-import Link from "next/link";
+const features = [
+  {
+    icon: LinkIcon,
+    title: "Instant Link Shortening",
+    description:
+      "Transform any long URL into a clean, shareable short link in seconds. No sign-up required to get started.",
+  },
+  {
+    icon: BarChart3,
+    title: "Click Analytics",
+    description:
+      "Track every click on your short links. See how many people visited, when they clicked, and where they came from.",
+  },
+  {
+    icon: MousePointerClick,
+    title: "Custom Aliases",
+    description:
+      "Create branded short links with your own custom alias to make them memorable and recognizable.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    description:
+      "Built on a high-performance serverless infrastructure so your redirects happen in milliseconds, every time.",
+  },
+  {
+    icon: Shield,
+    title: "Secure & Reliable",
+    description:
+      "Security scanning coming soon: automatically check links for malicious content while keeping your redirects reliable around the clock.",
+  },
+  {
+    icon: Globe,
+    title: "Dashboard Management",
+    description:
+      "Manage all your shortened links from one place. Edit, disable, or delete links whenever you need to.",
+  },
+];
 import {
   LinkIcon,
   BarChart3,
