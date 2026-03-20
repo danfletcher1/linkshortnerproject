@@ -21,9 +21,9 @@ const features = [
   },
   {
     icon: BarChart3,
-    title: "Click Analytics",
+    title: "Click Analytics (Coming Soon)",
     description:
-      "Track every click on your short links. See how many people visited, when they clicked, and where they came from.",
+      "Soon you'll be able to track every click on your short links — see visits, timestamps, and referral sources.",
   },
   {
     icon: MousePointerClick,
@@ -41,7 +41,7 @@ const features = [
     icon: Shield,
     title: "Secure & Reliable",
     description:
-      "All links are scanned for malicious content. Your links stay active and protected around the clock.",
+      "Your links stay active and reliable around the clock. Malicious-link scanning is coming soon to keep your audience safe.",
   },
   {
     icon: Globe,
