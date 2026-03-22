@@ -1,6 +1,5 @@
 ---
-description: "Use when building or modifying any UI element, component, layout, or visual feature. Covers shadcn-ui-only rule, component usage patterns, and styling conventions."
-applyTo: "app/**,components/**"
+description: Read this before modifying or creating UI components in the project.
 ---
 
 # UI Component Rules

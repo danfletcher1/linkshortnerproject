@@ -7,6 +7,7 @@ import {
   Globe,
   MousePointerClick,
 } from "lucide-react";
+import { currentUser } from "@clerk/nextjs/server";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -57,7 +58,15 @@ const steps = [
   { step: "3", title: "Share & track", description: "Share the link and watch the analytics roll in." },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const [{ default: getLinks }] = await Promise.all([
+    import("@/data/getLinks"),
+  ]);
+
+  const user = await currentUser();
+
+  const links = await getLinks(50, user?.id);
+
   return (
     <main className="flex flex-col items-center w-full">
       {/* Hero */}
@@ -84,6 +93,8 @@ export default function Home() {
       </section>
 
       <Separator className="max-w-4xl w-full mx-auto" />
+
+      {/* Debug information removed */}
 
       {/* Features */}
       <section className="w-full max-w-5xl mx-auto px-4 py-16">
@@ -133,6 +144,30 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Recent links */}
+      <section className="w-full max-w-3xl mx-auto px-4 py-12">
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">Recent links</h2>
+        {links.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No links found.</p>
+        ) : (
+          <ul className="space-y-3">
+            {links.map((l: any) => (
+              <li key={l.id} className="p-3 border rounded-md">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="font-mono text-sm text-muted-foreground">/{l.code}</div>
+                    <a className="font-medium break-all" href={l.url} target="_blank" rel="noreferrer">{l.url}</a>
+                  </div>
+                  <div className="text-sm text-muted-foreground">{new Date(l.createdAt).toLocaleString()}</div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      {/* Currently signed-in users removed */}
 
       {/* CTA */}
       <section className="w-full bg-muted/50 border-t">
