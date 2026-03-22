@@ -1,6 +1,5 @@
 ---
-description: "Use when implementing authentication, protected routes, redirects, login, signup, or any access-control logic. Covers Clerk-only auth rules, protected dashboard route, homepage redirect, and modal sign-in/sign-up."
-applyTo: "app/**,middleware.ts,proxy.ts"
+description: Read this before modifying authentication in the project.
 ---
 
 # Authentication Rules
