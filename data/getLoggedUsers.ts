@@ -6,7 +6,11 @@ export default async function getLoggedUsers() {
 
   const users = Array.isArray(res)
     ? res
-    : (res as any).data ?? (res as any).users ?? (res as any).results ?? (res as any).value ?? [];
+    : ((res as any).data ??
+      (res as any).users ??
+      (res as any).results ??
+      (res as any).value ??
+      []);
 
   return (users as any[]).map((u: any) => ({
     id: u.id,

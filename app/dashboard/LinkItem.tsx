@@ -22,7 +22,9 @@ export default function LinkItem({ link }: LinkItemProps) {
     <li className="p-3 border rounded-md">
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="font-mono text-sm text-muted-foreground shrink-0">/{link.code}</div>
+          <div className="font-mono text-sm text-muted-foreground shrink-0">
+            /{link.code}
+          </div>
           <a
             className="font-medium break-all truncate"
             href={link.url}
@@ -39,14 +41,22 @@ export default function LinkItem({ link }: LinkItemProps) {
           <Button variant="outline" size="sm" onClick={() => setEditOpen(true)}>
             Edit
           </Button>
-          <Button variant="destructive" size="sm" onClick={() => setDeleteOpen(true)}>
+          <Button
+            variant="destructive"
+            size="sm"
+            onClick={() => setDeleteOpen(true)}
+          >
             Delete
           </Button>
         </div>
       </div>
 
       <EditLinkDialog open={editOpen} onOpenChange={setEditOpen} link={link} />
-      <DeleteLinkDialog open={deleteOpen} onOpenChange={setDeleteOpen} link={link} />
+      <DeleteLinkDialog
+        open={deleteOpen}
+        onOpenChange={setDeleteOpen}
+        link={link}
+      />
     </li>
   );
 }

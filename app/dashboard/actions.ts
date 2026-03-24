@@ -12,7 +12,10 @@ const CreateLinkSchema = z.object({
     .string()
     .min(1, "Slug is required")
     .max(50, "Slug must be 50 characters or fewer")
-    .regex(/^[a-zA-Z0-9_-]+$/, "Slug may only contain letters, numbers, hyphens, and underscores"),
+    .regex(
+      /^[a-zA-Z0-9_-]+$/,
+      "Slug may only contain letters, numbers, hyphens, and underscores",
+    ),
 });
 
 export type CreateLinkInput = z.infer<typeof CreateLinkSchema>;
@@ -40,7 +43,8 @@ export async function createLinkAction(input: CreateLinkInput) {
 
     return { success: true, link };
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Failed to create link";
+    const message =
+      err instanceof Error ? err.message : "Failed to create link";
     if (message.includes("unique") || message.includes("duplicate")) {
       return { error: "That slug is already taken. Please choose another." };
     }
@@ -52,7 +56,10 @@ const LinkSlugSchema = z
   .string()
   .min(1, "Slug is required")
   .max(50, "Slug must be 50 characters or fewer")
-  .regex(/^[a-zA-Z0-9_-]+$/, "Slug may only contain letters, numbers, hyphens, and underscores");
+  .regex(
+    /^[a-zA-Z0-9_-]+$/,
+    "Slug may only contain letters, numbers, hyphens, and underscores",
+  );
 
 const UpdateLinkSchema = z.object({
   id: z.string().min(1, "Link ID is required"),
@@ -83,12 +90,15 @@ export async function updateLinkAction(input: UpdateLinkInput) {
     });
 
     if (!link) {
-      return { error: "Link not found or you do not have permission to edit it." };
+      return {
+        error: "Link not found or you do not have permission to edit it.",
+      };
     }
 
     return { success: true, link };
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Failed to update link";
+    const message =
+      err instanceof Error ? err.message : "Failed to update link";
     if (message.includes("unique") || message.includes("duplicate")) {
       return { error: "That slug is already taken. Please choose another." };
     }

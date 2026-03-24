@@ -20,7 +20,11 @@ interface DeleteLinkDialogProps {
   link: { id: string; code: string };
 }
 
-export default function DeleteLinkDialog({ open, onOpenChange, link }: DeleteLinkDialogProps) {
+export default function DeleteLinkDialog({
+  open,
+  onOpenChange,
+  link,
+}: DeleteLinkDialogProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -39,8 +43,10 @@ export default function DeleteLinkDialog({ open, onOpenChange, link }: DeleteLin
           <AlertDialogTitle>Delete short link</AlertDialogTitle>
           <AlertDialogDescription>
             Are you sure you want to delete{" "}
-            <span className="font-mono font-medium text-foreground">/{link.code}</span>? This
-            action cannot be undone.
+            <span className="font-mono font-medium text-foreground">
+              /{link.code}
+            </span>
+            ? This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

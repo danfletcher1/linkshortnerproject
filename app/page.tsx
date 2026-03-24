@@ -9,7 +9,13 @@ import {
 } from "lucide-react";
 import { currentUser } from "@clerk/nextjs/server";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
@@ -22,9 +28,9 @@ const features = [
   },
   {
     icon: BarChart3,
-    title: "Click Analytics (Coming Soon)",
+    title: "Bulk Shortening",
     description:
-      "Soon you'll be able to track every click on your short links — see visits, timestamps, and referral sources.",
+      "Shorten many URLs at once to save time when migrating or sharing multiple links.",
   },
   {
     icon: MousePointerClick,
@@ -53,9 +59,21 @@ const features = [
 ];
 
 const steps = [
-  { step: "1", title: "Paste your URL", description: "Drop your long link into the input field." },
-  { step: "2", title: "Get your short link", description: "We generate a unique short URL instantly." },
-  { step: "3", title: "Share & track", description: "Share the link and watch the analytics roll in." },
+  {
+    step: "1",
+    title: "Paste your URL",
+    description: "Drop your long link into the input field.",
+  },
+  {
+    step: "2",
+    title: "Get your short link",
+    description: "We generate a unique short URL instantly.",
+  },
+  {
+    step: "3",
+    title: "Share & manage",
+    description: "Share your link and manage it from the dashboard.",
+  },
 ];
 
 export default async function Home() {
@@ -76,11 +94,11 @@ export default async function Home() {
         </Badge>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
           Shorten links.{" "}
-          <span className="text-muted-foreground">Track results.</span>
+          <span className="text-muted-foreground">Share & manage.</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl">
-          The simplest way to create short, powerful links and understand how
-          your audience engages with them.
+          The simplest way to create short, powerful links and manage them from
+          one place.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-2">
           <Button asChild size="lg" className="px-8">
@@ -91,10 +109,6 @@ export default async function Home() {
           </Button>
         </div>
       </section>
-
-      <Separator className="max-w-4xl w-full mx-auto" />
-
-      {/* Debug information removed */}
 
       {/* Features */}
       <section className="w-full max-w-5xl mx-auto px-4 py-16">
@@ -147,7 +161,9 @@ export default async function Home() {
 
       {/* Recent links */}
       <section className="w-full max-w-3xl mx-auto px-4 py-12">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">Recent links</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">
+          Recent links
+        </h2>
         {links.length === 0 ? (
           <p className="text-sm text-muted-foreground">No links found.</p>
         ) : (
@@ -156,10 +172,21 @@ export default async function Home() {
               <li key={l.id} className="p-3 border rounded-md">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="font-mono text-sm text-muted-foreground">/{l.code}</div>
-                    <a className="font-medium break-all" href={l.url} target="_blank" rel="noreferrer">{l.url}</a>
+                    <div className="font-mono text-sm text-muted-foreground">
+                      /{l.code}
+                    </div>
+                    <a
+                      className="font-medium break-all"
+                      href={l.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {l.url}
+                    </a>
                   </div>
-                  <div className="text-sm text-muted-foreground">{new Date(l.createdAt).toLocaleString()}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {new Date(l.createdAt).toLocaleString()}
+                  </div>
                 </div>
               </li>
             ))}

@@ -19,7 +19,10 @@ interface CreateLinkDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export default function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) {
+export default function CreateLinkDialog({
+  open,
+  onOpenChange,
+}: CreateLinkDialogProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [url, setUrl] = useState("");
@@ -86,7 +89,12 @@ export default function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialo
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
           <DialogFooter>
-            <Button type="button" variant="outline" onClick={() => handleClose(false)} disabled={isPending}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => handleClose(false)}
+              disabled={isPending}
+            >
               Cancel
             </Button>
             <Button type="submit" disabled={isPending}>

@@ -17,9 +17,9 @@ All UI elements in this app are built exclusively with **shadcn-ui**. Do not cre
 ## Usage Pattern
 
 ```tsx
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function MyFeature() {
   return (
@@ -32,6 +32,6 @@ export function MyFeature() {
         <Button>Submit</Button>
       </CardContent>
     </Card>
-  )
+  );
 }
 ```

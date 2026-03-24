@@ -20,7 +20,11 @@ interface EditLinkDialogProps {
   link: { id: string; code: string; url: string };
 }
 
-export default function EditLinkDialog({ open, onOpenChange, link }: EditLinkDialogProps) {
+export default function EditLinkDialog({
+  open,
+  onOpenChange,
+  link,
+}: EditLinkDialogProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [url, setUrl] = useState(link.url);
